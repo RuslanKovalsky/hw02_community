@@ -21,12 +21,10 @@ class GroupAdmin(admin.ModelAdmin):
     list_display = ('pk', 'title', 'description')
     empty_value_display = 'пусто',
 
-
 admin.site.register(Post, PostAdmin)
 admin.site.register(Group, GroupAdmin)
 
+#Для настройки отображения модели в интерфейсе
+#админки применяют класс ModelAdmin. Он связывается с
+#моделью и конфигурирует отображение данных этой модели
 
-
-"""Для настройки отображения модели в интерфейсе
- админки применяют класс ModelAdmin. Он связывается с 
- моделью и конфигурирует отображение данных этой модели"""
