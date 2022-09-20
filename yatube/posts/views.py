@@ -2,14 +2,15 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post, Group
 
 
-COUNT_POST: int = 10  #подсмотрел на форуме, могу так делать?
+COUNT_POST: int = 10
 
 
 def index(request):
     # по классике главная страница
     # Одна строка вместо тысячи слов на SQL:
     # в переменную posts будет сохранена выборка из 10 объектов модели Post,
-    # отсортированных по полю pub_date по убыванию (от больших значений к меньшим)
+    # отсортированных по полю pub_date по убыванию
+    # (от больших значений к меньшим)
     posts = Post.objects.order_by('-pub_date')[:COUNT_POST]
     # В словаре context отправляем информацию в шаблон
     context = {
