@@ -24,8 +24,6 @@ class GroupAdmin(admin.ModelAdmin):
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Group, GroupAdmin)
-
 # Для настройки отображения модели в интерфейсе
 # админки применяют класс ModelAdmin. Он связывается с
 # моделью и конфигурирует отображение данных этой модели
-
