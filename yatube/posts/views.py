@@ -14,7 +14,7 @@ def index(request):
     # (от больших значений к меньшим)
     page_title = 'last refreshed'
     posts = Post.objects.order_by('-pub_date')[:COUNT_POST]
-    # В словаре context отправляем информацию в шаблон
+    # В словаре context отправляем информацию в шаблонc
     context = {
         'page_title': page_title,
         'posts': posts,
@@ -28,8 +28,7 @@ def group_list(request, slug):
     # из базы данных или возвращает сообщение об ошибке, если объект не найден.
     # В нашем случае в переменную group будут переданы объекты модели Group,
     # поле slug у которых соответствует значению slug в запросе
-    group = get_object_or_404(Group, slug=slug)
-    template = 'posts/index.html'
+    template = 'base/index.html'
     group = get_object_or_404(Group, slug=slug)
     page_title = f'записи{slug}'
     # Метод .filter позволяет ограничить поиск по критериям.
