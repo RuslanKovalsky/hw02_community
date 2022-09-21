@@ -29,6 +29,3 @@ class Post(models.Model):
         related_name='group'
     )
 
-
-
-
