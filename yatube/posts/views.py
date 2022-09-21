@@ -5,18 +5,18 @@ from .models import Post, Group
 COUNT_POST: int = 10
 # вычитал на форуме что можно так сделать через каунт ...
 
+
 def index(request):
     # по классике главная страница
     # Одна строка вместо тысячи слов на SQL:
     # в переменную posts будет сохранена выборка из 10 объектов модели Post,
     # отсортированных по полю pub_date по убыванию
     # (от больших значений к меньшим)
-    template = 'post/index.html'
     page_title = 'last refreshed'
     posts = Post.objects.order_by('-pub_date')[:COUNT_POST]
     # В словаре context отправляем информацию в шаблон
     context = {
-        'page_title' : page_title,
+        'page_title': page_title,
         'posts': posts,
     }
     return render(request, 'posts/index.html', context)
@@ -37,7 +37,7 @@ def group_list(request, slug):
     # условия WHERE group_id = {group_id}
     posts = Post.objects.filter(group=group).order_by('-pub_date')[:COUNT_POST]
     context = {
-        'page_title' : page_title,
+        'page_title': page_title,
         'group': group,
         'posts': posts,
     }
