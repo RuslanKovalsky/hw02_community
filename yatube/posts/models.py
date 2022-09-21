@@ -5,7 +5,7 @@ User = get_user_model()
 
 
 class Group(models.Model):
-    title = models.CharField() # вот здесь чтто-то надо менять
+    title = models.CharField(max_length=100)
     slug = models.URLField()
     description = models.TextField()
 
