@@ -3,10 +3,6 @@ from django.shortcuts import render, get_object_or_404
 from .models import Post, Group
 
 
-# COUNT_POST: int = 10
-# вычитал на форуме что можно так сделать через каунт ...
-
-
 def index(request):
     # по классике главная страница
     # Одна строка вместо тысячи слов на SQL:
