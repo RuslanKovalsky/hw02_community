@@ -1,8 +1,9 @@
+from django.contrib.auth import get_user_model
 from django.shortcuts import render, get_object_or_404
 from .models import Post, Group
 
 
-COUNT_POST: int = 10
+# COUNT_POST: int = 10
 # вычитал на форуме что можно так сделать через каунт ...
 
 
@@ -13,7 +14,7 @@ def index(request):
     # отсортированных по полю pub_date по убыванию
     # (от больших значений к меньшим)
     page_title = 'last refreshed'
-    posts = Post.objects.order_by('-pub_date')[:COUNT_POST]
+    posts = Post.objects.order_by('-pub_date')[:10]
     # В словаре context отправляем информацию в шаблонc
     context = {
         'page_title': page_title,
@@ -22,7 +23,7 @@ def index(request):
     return render(request, 'posts/index.html', context)
 
 
-def group_list(request, slug):
+def group_posts(request, slug):
     # Страничка где лежат списки сообществ
     # Функция get_object_or_404 получает по заданным критериям объект
     # из базы данных или возвращает сообщение об ошибке, если объект не найден.
@@ -34,10 +35,10 @@ def group_list(request, slug):
     # Метод .filter позволяет ограничить поиск по критериям.
     # Это аналог добавления
     # условия WHERE group_id = {group_id}
-    posts = Post.objects.filter(group=group).order_by('-pub_date')[:COUNT_POST]
+    posts = Post.objects.filter(group=group).order_by('-pub_date')[:10]
     context = {
         'page_title': page_title,
         'group': group,
         'posts': posts,
     }
-    return render(request, template, context=context)
+    return render(request, template, context)
