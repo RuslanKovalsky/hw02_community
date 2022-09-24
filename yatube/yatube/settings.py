@@ -74,6 +74,11 @@ WSGI_APPLICATION = 'yatube.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
+# Django умеет работать с разными базами данных,
+# и в свойстве ENGINE указано, какой драйвер баз
+# данных использует проект; в нашем проекте это
+# будет SQLite. Эта база была автоматически установлена
+# на вашем компьютере вместе с Python
 
 DATABASES = {
     'default': {
