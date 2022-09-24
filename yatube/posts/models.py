@@ -31,7 +31,8 @@ class Post(models.Model):
         related_name='posts'
     )
 # Параметр on_delete=models.CASCADE обеспечивает связность данных
-# таблицы User будет удалён пользователь, то будут удалены все связанные с ним посты.
+# таблицы User будет удалён пользователь, то будут удалены
+# все связанные с ним посты.
 
     group = models.ForeignKey(
         Group,
