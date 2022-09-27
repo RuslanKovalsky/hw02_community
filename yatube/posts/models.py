@@ -8,8 +8,13 @@ User = get_user_model()
 # Классы, с которыми работает ORM, называются моделями
 class Group(models.Model):
     title = models.CharField(max_length=200)
+    # строковое представление с параметром макс длины с
+    # размером этой колонкт в БД
     slug = models.SlugField(unique=True)
     description = models.TextField(max_length=400)
+    # как всё прописал, я должен сделать миграции то
+    # есть накатить эти таблицы на базу данных,  а
+    # для этого я использую команду manage.py migrate
 
     def __str__(self) -> str:
         return str(self.title)
@@ -20,6 +25,8 @@ class Group(models.Model):
 # подставлено время и дата создания новой записи
 # Описание модели начинается с объявления:
 # класс Post — это наследник класса Model из модуля models.
+# Каждый класс это определенная таблица в базе.
+# Модели должны инкапсулировать каждый аспект(свойства) объекта
 class Post(models.Model):
     text = models.TextField()
     # TextField — поле для хранения произвольного текста.
