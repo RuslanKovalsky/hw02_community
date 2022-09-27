@@ -1,35 +1,37 @@
-<!DOCTYPE html>
-{% extends "base.html" %}
-{% load static %}
-    <head>
-      {% block title %}
-            <title>{{ group }}</title>
-      {% endblock %}
-    </head>
-    {% block content %}
-      <body>
-        <maim>
-         <div class="container">
-           <h1>{{ text }}</h1>
-             <article>
-               {% for post in posts %}
-                 <ul>
-                   <li>
-                     Автор: {{ posy.author.get_full_name }}
-                   </li>
-                   <li>
-                     Дата публикации: {{ pub_date|date:"d M Y" }}
-                   </li>
-                 </ul>
-                 <p>{{ post.text }}<p>
-                 {% if post.group %}
-                    <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
-                 {% endif %}
-                 <!--<a href="">все записи группы</a>-->
-                 {% if not forloop %}<hr>{% endif %}
-               {% endfor %}
-             </article>
-          </div>
-        </maim>
-      </body>
-    {% endblock %}
+
+<!-- templates/posts/group_list.html -->
+{% extends 'base.html' %}
+{% block title %}
+<title>{{ title }}</title>
+{% endblock %}
+{% block content %}
+
+<div class="container py-5">
+  <h1>{{ text }}</h1>
+  <p>
+    {{ group.title }}
+  </p>
+  <article>
+    {% for post in posts %}
+    <ul>
+      <li>
+        Автор: {{ post.author.get_full_name }}
+      </li>
+      <li>
+        Дата публикации: {{ post.pub_date|date:"d E Y" }}
+      </li>
+    </ul>
+    <p>
+      {{ post.text }}
+    </p>
+
+    {% if post.group %}
+  <a href=" ">все записи группы</a>
+{% endif %}
+
+    {% if not forloop.last %}<hr>{% endif %}
+{% endfor %}
+  </article>
+  <!-- под последним постом нет линии -->
+</div>
+{% endblock %} 
