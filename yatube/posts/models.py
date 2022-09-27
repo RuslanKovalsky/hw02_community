@@ -37,6 +37,9 @@ class Post(models.Model):
         on_delete=models.CASCADE,
         related_name='posts'
     )
+
+    class Meta:
+        ordering = ('pub_date',)
 # Параметр on_delete=models.CASCADE обеспечивает связность данных
 # таблицы User будет удалён пользователь, то будут удалены
 # все связанные с ним посты.
