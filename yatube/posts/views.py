@@ -15,7 +15,7 @@ def index(request):
         'page_title': page_title,
         'posts': posts,
     }
-    return render(request, 'posts/index.html', context)
+    return render(request, 'posts/index.html', context=context)
 
 
 def group_posts(request, slug):
@@ -24,7 +24,6 @@ def group_posts(request, slug):
     # из базы данных или возвращает сообщение об ошибке, если объект не найден.
     # В нашем случае в переменную group будут переданы объекты модели Group,
     # поле slug у которых соответствует значению slug в запросе
-    template = 'base/index.html'
     group = get_object_or_404(Group, slug=slug)
     page_title = f'записи{slug}'
     # Метод .filter позволяет ограничить поиск по критериям.
@@ -36,4 +35,4 @@ def group_posts(request, slug):
         'group': group,
         'posts': posts,
     }
-    return render(request, template, context)
+    return render(request, 'posts/group_list.html', context=context)
