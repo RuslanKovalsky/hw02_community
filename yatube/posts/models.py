@@ -9,26 +9,25 @@ class Post(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(
         User,
-        on_delete=models.CASCADE,
-        related_name='posts'
+        on_delete=models.SET_NULL, null=True,
+        related_name='all_posts'
     )
-
-    class Meta:
-        ordering = ('pub_date',)
-
     group = models.ForeignKey(
-        Group,
+        "Group",
         blank=True,
         null=True,
         on_delete=models.SET_NULL,
-        related_name='group'
+        related_name='groups'
     )
+
+    class Meta:
+        ordering = ("-pub_date",)
 
 
 class Group(models.Model):
     title = models.CharField(max_length=200)
-    slug = models.SlugField(unique=True)
+    slug = models.CharField(unique=True, max_length=100)
     description = models.TextField(max_length=400)
 
-    def __str__(self) -> str:
-        return str(self.title)
+    def __str__(self):
+        return self.title

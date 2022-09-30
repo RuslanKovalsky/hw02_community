@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import Post
-from .models import Group
+from posts.models import Post, Group
 
 
 class PostAdmin(admin.ModelAdmin):
@@ -24,6 +23,3 @@ class GroupAdmin(admin.ModelAdmin):
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(Group, GroupAdmin)
-# Для настройки отображения модели в интерфейсе
-# админки применяют класс ModelAdmin. Он связывается с
-# моделью и конфигурирует отображение данных этой модели
