@@ -18,6 +18,7 @@ def group_posts(request, slug):
     page_title = f'записи{slug}'
     posts = Post.objects.filter(group=group).order_by('-pub_date')[:COUNT]
     context = {
+        'page_title: page_title,'
         'group': group,
         'posts': posts,
     }
