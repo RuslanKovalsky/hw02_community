@@ -15,7 +15,7 @@ def index(request):
 
 def group_posts(request, slug):
     group = get_object_or_404(Group, slug=slug)
-    page_title = f'записи{slug}'
+    f'записи{slug}'
     posts = Post.objects.filter(group=group).order_by('-pub_date')[:COUNT]
     context = {
         'page_title: page_title,'
