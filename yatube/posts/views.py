@@ -6,20 +6,22 @@ COUNT = 10
 
 
 def index(request):
+    template = 'posts/index.html'
+    title = 'Последние обновления на сайте'
     posts = Post.objects.order_by('-pub_date')[:COUNT]
     context = {
         'posts': posts,
+        'title': title,
     }
-    return render(request, 'posts/index.html', context=context)
+    return render(request, template, context=context)
 
 
 def group_posts(request, slug):
+    template = 'posts/group_list.html'
     group = get_object_or_404(Group, slug=slug)
-    f'записи{slug}'
     posts = Post.objects.filter(group=group).order_by('-pub_date')[:COUNT]
     context = {
-        'page_title: page_title,'
         'group': group,
         'posts': posts,
     }
-    return render(request, 'posts/group_list.html', context=context)
+    return render(request, 'template', context=context)

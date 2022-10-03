@@ -10,14 +10,14 @@ class Post(models.Model):
     author = models.ForeignKey(
         User,
         on_delete=models.SET_NULL, null=True,
-        related_name='all_posts'
+        related_name='posts'
     )
     group = models.ForeignKey(
         "Group",
         blank=True,
         null=True,
         on_delete=models.SET_NULL,
-        related_name='groups'
+        related_name='posts'
     )
 
     class Meta:
