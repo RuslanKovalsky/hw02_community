@@ -144,3 +144,6 @@ dmypy.json
 .history/
 
 .mypy_cache
+
+# Ignore the build directory
+/static
