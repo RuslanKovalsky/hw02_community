@@ -147,3 +147,4 @@ dmypy.json
 
 # Ignore the build directory
 /static
+/tests
