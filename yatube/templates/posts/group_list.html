@@ -4,7 +4,7 @@
 {% endblock %}
 {% block content %}
   <h1>{{ group.title }}</h1>
-    <p>{{ description }}</p>
+    <p>{{ 'Лев Толстой – зеркало русской революции' }}</p>
     <article>
     {% for post in posts %}
       <ul>
@@ -15,11 +15,9 @@
           Дата публикации: {{ post.pub_date|date:"d E Y" }}
         </li>
       </ul>
-    </article>
       <p>
         {{ post.text }}
       </p>
-      <article>
       {% if post.group %}
         <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
       {% endif %}

@@ -1,4 +1,4 @@
-from .import views
+from posts import views
 from django.urls import path
 
 
