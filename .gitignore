@@ -147,4 +147,5 @@ dmypy.json
 
 # Ignore the build directory
 /static
-/tests
+/tests!/yatube/users/urls.py
+/users
